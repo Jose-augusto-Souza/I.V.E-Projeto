@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <!-- Define a codificação de caracteres para o documento -->
+    <meta charset="UTF-8">
+    <!-- Define a viewport para controle de layout em dispositivos móveis -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Define o título da página -->
+    <title>I.V.E</title>
+    <!-- Define o ícone da página (favicon) -->
+    <link rel="shortcut icon" href="assets/img/logo1.ico" type="image/x-icon">
+    <!-- Inclui o CSS do Bootstrap para estilização -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Inclui os ícones do Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Inclui o Modernizr para detecção de recursos HTML5 e CSS3 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+    <!-- Inclui o CSS para animações (Textillate) -->
+    <link rel="stylesheet" href="assets/vendore/texllate/animate.css">
+    <!-- Inclui o CSS personalizado -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Inclui a fonte "Press Start 2P" do Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+</head>
+<body>
+    <!-- Container principal para o layout da página -->
+    <div class="container">
+        <!-- Seção principal com uma imagem de fundo e uma caixa de entrada de texto -->
+        <section id="Oval" class="mb-4">
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    <!-- Container para centralizar a imagem de fundo -->
+                    <div class="d-flex justify-content-center align-items-center" style="height: 80vh;">
+                        <img src="https://res.cloudinary.com/dim1hktyx/image/upload/v1715109492/Images/zwyy4qzejfa3ovdwhpov.gif" alt=""
+                             style="position: absolute; width: 100vw; height: 100vh; top: 0px; left: 0px; object-fit: cover; z-index: -1;"> 
+                    </div>
+                    <!-- Texto centralizado na página -->
+                    <h5 class="text-light text text-center bits">Pergunte-me qualquer coisa</h5>
+                    <div class="col-md-12 mt-4 pt-4">
+                        <div class="text-center">
+                            <div id="TextInput" class="d-flex">
+                                <!-- Campo de entrada de texto para chat -->
+                                <input type="text" class="input-field" name="chatbox" id="chatbox" placeholder="Escreva aqui ... ">
+                                <!-- Botão de enviar, inicialmente escondido -->
+                                <button id="SendBtn" class="glow-on-hover" hidden><i class="bi bi-send"></i></button>
+                                <!-- Botão de microfone -->
+                                <button id="MicBtn" class="glow-on-hover"><i class="bi bi-mic"></i></button>
+                                <!-- Botão de chat que abre um offcanvas -->
+                                <button id="ChatBtn" class="glow-on-hover" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"><i class="bi bi-chat-dots"></i></button>
+                                <!-- Botão de configurações -->
+                                <button id="SettingsBtn" class="glow-on-hover"><i class="bi bi-images"></i></button>
+                                <!-- Botão de perguntas -->
+                                <button id="QuestionBtn" class="glow-on-hover"><i class="bi bi-question-lg"></i></button>
+                                <!-- Botão de código que abre um modal -->
+                                <button id="CodeBtn" class="glow-on-hover" data-bs-toggle="modal" data-bs-target="#codeModal"><i class="bi bi-code-slash"></i></button> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+        </section>
+        
+        <!-- Seção para a animação de onda do Siri, inicialmente escondida -->
+        <section id="SiriWave" class="mb-4" hidden>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- Container para centralizar o texto e a animação -->
+                        <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+                            <div class="">
+                                <p class="text-start text-light mb-4 siri-message" style="font-size: 28px;">Ola, eu sou I.V.E</p>
+                                <div id="siri-container"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Modal para configurações de GIFs -->
+        <div class="modal fade" id="settingsModal" tabindex="-1" aria-labelledby="settingsModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <!-- Título do modal -->
+                        <h5 class="modal-title" id="settingsModalLabel">Gifs</h5>
+                        <!-- Botão de fechar o modal -->
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                            <div class="row">
+                                <!-- Imagens GIFs que podem ser selecionadas -->
+                                <div class="col-4 mb-3">
+                                    <img src="https://res.cloudinary.com/dim1hktyx/image/upload/v1715109492/Images/zwyy4qzejfa3ovdwhpov.gif" class="img-fluid selectable-gif" alt="GIF 1">
+                                </div>
+                                <div class="col-4 mb-3">
+                                    <img src="https://res.cloudinary.com/dim1hktyx/image/upload/v1715109500/Images/eqdydg2xwyshub4srlav.gif" class="img-fluid selectable-gif" alt="GIF 2">
+                                </div>
+                                <div class="col-4 mb-3">
+                                    <img src="https://res.cloudinary.com/dim1hktyx/image/upload/v1715109500/Images/arbnioedjkws1wdhhtm3.gif" class="img-fluid selectable-gif" alt="GIF 3">
+                                </div>
+                                <div class="col-4 mb-3">
+                                    <img src="https://res.cloudinary.com/dim1hktyx/image/upload/v1715109499/Images/yxwyc8hom5l98wiagqat.gif" class="img-fluid selectable-gif" alt="GIF 4">
+                                </div>
+                                <div class="col-4 mb-3">
+                                    <img src="https://res.cloudinary.com/dim1hktyx/image/upload/v1715109498/Images/tt2t0icumgub7jcp6f0p.gif" class="img-fluid selectable-gif" alt="GIF 5">
+                                </div>
+                                <div class="col-4 mb-3">
+                                    <img src="https://res.cloudinary.com/dim1hktyx/image/upload/v1715109505/Images/hlf58h3jrl4wa4f4zymm.gif" class="img-fluid selectable-gif" alt="GIF 6">
+                                </div>
+                                <div class="col-4 mb-3">
+                                    <img src="https://res.cloudinary.com/dim1hktyx/image/upload/v1715109504/Images/ywr93n4fzlpqreouwzel.gif" class="img-fluid selectable-gif" alt="GIF 6">
+                                </div>
+                                <div class="col-4 mb-3">
+                                    <img src="https://res.cloudinary.com/dim1hktyx/image/upload/v1715109505/Images/hcv5km8hehpf5bzxrxsi.gif" class="img-fluid selectable-gif" alt="GIF 6">
+                                </div>
+                                <div class="col-4 mb-3">
+                                    <img src="https://res.cloudinary.com/dim1hktyx/image/upload/v1715109502/Images/kyvorzp4qhlytjttzmze.gif" class="img-fluid selectable-gif" alt="GIF 6">
+                                </div>
+                                <div class="col-4 mb-3">
+                                    <img src="https://res.cloudinary.com/dim1hktyx/image/upload/v1715109501/Images/b2jjpec62px9psegarre.gif" class="img-fluid selectable-gif" alt="GIF 6">
+                                </div>
+                                <div class="col-4 mb-3">
+                                    <img src="https://res.cloudinary.com/dim1hktyx/image/upload/v1715109501/Images/t1evws933flbg01181bn.gif" class="img-fluid selectable-gif" alt="GIF 6">
+                                </div>
+                                <div class="col-4 mb-3">
+                                    <img src="https://res.cloudinary.com/dim1hktyx/image/upload/v1715109500/Images/arbnioedjkws1wdhhtm3.gif" class="img-fluid selectable-gif" alt="GIF 6">
+                                </div>
+                                <div class="col-4 mb-3">
+                                    <img src="https://res.cloudinary.com/dim1hktyx/image/upload/v1715109496/Images/hhp3cvwtgptjzo2ntuqc.gif" class="img-fluid selectable-gif" alt="GIF 6">
+                                </div>
+                                <div class="col-4 mb-3">
+                                    <img src="https://res.cloudinary.com/dim1hktyx/image/upload/v1715109494/Images/asfsmlwdxhbrjtkuw97f.gif" class="img-fluid selectable-gif" alt="GIF 6">
+                                </div>
+                                <div class="col-4 mb-3">
+                                    <img src="https://res.cloudinary.com/dim1hktyx/image/upload/v1715109492/Images/xzsgymzbv6zltclbfalr.gif" class="img-fluid selectable-gif" alt="GIF 6">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <!-- Botão para salvar o GIF selecionado -->
+                        <button type="button" class="btn btn-success" id="saveGifBtn">Salvar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal para exibir comandos do chat -->
+        <div class="modal fade" id="questionModal" tabindex="-1" aria-labelledby="questionModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <!-- Título do modal -->
+                        <h5 class="modal-title" id="questionModalLabel">Duvidas Sobre o chat</h5>
+                        <!-- Botão de fechar o modal -->
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12">
+                                    <ul>
+                                        <!-- Lista de comandos disponíveis -->
+                                        <li>"Abrir [nome dos aplicativos listados]": Abre os aplicativos: bloco de notas, Word, navegador, PowerPoint.</li>
+                                        <li>"Ativar fala": Ativa o modo de ditado no sistema operacional, permitindo que você fale em vez de digitar.</li>
+                                        <li>"Calendário": Exibe o dia, mês e ano.</li>
+                                        <li>"Configurações": Abre o menu de Configurações do Windows.</li>
+                                        <li>"Esconder menu": Minimiza todas as janelas e mostra a área de trabalho.</li>
+                                        <li>"Exibir tarefas": Alterna entre as janelas abertas.</li>
+                                        <li>"Fechar aplicativo": Fecha o aplicativo atualmente ativo.</li>
+                                        <li>"Gerenciador de tarefas": Abre o Gerenciador de Tarefas do Windows.</li>
+                                        <li>"Horas": Informa a hora atual.</li>
+                                        <li>"Nova área de trabalho": Cria uma nova área de trabalho virtual.</li>
+                                        <li>"Pular fala": Aperte Esc e a assistente para de falar e escreve tudo pesquisado no histórico.</li>
+                                        <li>"Print": Captura a tela atual (equivalente a pressionar a tecla "Print Screen").</li>
+                                        <li>"Recorte": Abre a ferramenta de Recorte do Windows.</li>
+                                        <li>"Tocar [Pesquisa] no youtube": Reproduz um vídeo no YouTube. Exemplo: imagine dragons no youtube.</li>
+                                        <li>"Temperatura": Informa a temperatura atual na localidade de Araraquara.</li>
+                                        <li>"Feito por: Diogo Souza, José Augusto Alves de Souza, Miguel Dias"</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal para comandos personalizados -->
+        <div class="modal fade" id="codeModal" tabindex="-1" aria-labelledby="codeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <!-- Título do modal -->
+                        <h5 class="modal-title" id="codeModalLabel">Comandos Personalizados</h5>
+                        <!-- Botão de fechar o modal -->
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                            <!-- Abas para comandos Web e Windows -->
+                            <ul class="nav nav-tabs" id="commandTabs" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" id="web-tab" data-bs-toggle="tab" data-bs-target="#webCommandsContent" type="button" role="tab" aria-controls="webCommandsContent" aria-selected="true">Web</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="windows-tab" data-bs-toggle="tab" data-bs-target="#windowsCommandsContent" type="button" role="tab" aria-controls="windowsCommandsContent" aria-selected="false">Windows</button>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="commandTabsContent">
+                                <!-- Conteúdo da aba de comandos Web -->
+                                <div class="tab-pane fade show active" id="webCommandsContent" role="tabpanel" aria-labelledby="web-tab">
+                                    <div class="row mt-4">
+                                        <div class="col-12">
+                                            <!-- Formulário para adicionar comandos Web -->
+                                            <div class="mb-3">
+                                                <label for="webCommand" class="form-label">Palavra-chave:</label>
+                                                <input type="text" class="form-control" id="webCommand" placeholder="Ex: abrir site">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="webUrl" class="form-label">URL:</label>
+                                                <input type="text" class="form-control" id="webUrl" placeholder="Ex: www.google.com">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="exampleWebCommand" class="form-label">Exemplo:</label>
+                                                <div class="form-control" id="exampleWebCommand" readonly>
+                                                    "abrir site google": "www.google.com"
+                                                </div>
+                                            </div>
+                                            <button type="button" class="btn btn-success" id="saveWebCommand">Salvar Comando Web</button>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-4">
+                                        <div class="col-12">
+                                            <h5 class="mb-3">Comandos Web Salvos:</h5>
+                                            <div id="savedWebCommands" class="form-control" readonly>
+                                                <!-- Os comandos Web salvos serão exibidos aqui -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Conteúdo da aba de comandos Windows -->
+                                <div class="tab-pane fade" id="windowsCommandsContent" role="tabpanel" aria-labelledby="windows-tab">
+                                    <div class="row mt-4">
+                                        <div class="col-12">
+                                            <!-- Formulário para adicionar comandos Windows -->
+                                            <div class="mb-3">
+                                                <label for="windowsCommand" class="form-label">Palavra-chave:</label>
+                                                <input type="text" class="form-control" id="windowsCommand" placeholder="Ex: abrir bloco de notas">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="windowsPath" class="form-label">Caminho do Arquivo:</label>
+                                                <input type="text" class="form-control" id="windowsPath" placeholder="Ex: C:\Windows\notepad.exe">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="exampleWindowsCommand" class="form-label">Exemplo:</label>
+                                                <div class="form-control" id="exampleWindowsCommand" readonly>
+                                                    "abrir bloco de notas": "C:/Windows/notepad.exe"
+                                                </div>
+                                            </div>
+                                            <button type="button" class="btn btn-success" id="saveWindowsCommand">Salvar Comando Windows</button>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-4">
+                                        <div class="col-12">
+                                            <h5 class="mb-3">Comandos Windows Salvos:</h5>
+                                            <div id="savedWindowsCommands" class="form-control" readonly>
+                                                <!-- Os comandos Windows salvos serão exibidos aqui -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Offcanvas para exibir chats -->
+        <div class="offcanvas offcanvas-start chat-canvas" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
+             id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+            <div class="offcanvas-header">
+                <!-- Título do offcanvas -->
+                <h5 class="offcanvas-title text-white" id="offcanvasScrollingLabel">Chats</h5>
+                <!-- Botão de fechar o offcanvas -->
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div id="chat-canvas-body" class="offcanvas-body">
+                <!-- O conteúdo dos chats será inserido aqui -->
+            </div>
+        </div>
+    </div>
+    
+    <!-- Inclui o jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <!-- Inclui o JavaScript do Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Inclui o script do SiriWave -->
+    <script src="https://unpkg.com/siriwave/dist/siriwave.umd.min.js"></script>
+    <!-- Inclui o script do Textillate -->
+    <script src="assets/vendore/texllate/jquery.fittext.js"></script>
+    <script src="assets/vendore/texllate/jquery.lettering.js"></script>
+    <script src="http://jschr.github.io/textillate/jquery.textillate.js"></script>
+    <!-- Inclui os scripts personalizados -->
+    <script src="main.js"></script>
+    <script src="controller.js"></script>
+    <script src="/eel.js"></script>
+</body>
+</html>

@@ -1,0 +1,167 @@
+/* Estilos gerais para o corpo da página */
+body {
+  background-color: black; /* Define a cor de fundo como preto */
+  overflow-y: hidden; /* Oculta a rolagem vertical */
+  overflow-x: hidden; /* Oculta a rolagem horizontal */
+}
+
+/* Estilos para a caixa de entrada de texto */
+#TextInput {
+  background-color: #181818a8; /* Cor de fundo com transparência */
+  border-color: blue; /* Cor da borda */
+  box-shadow: 0 0 20px rgb(25, 0, 255), /* Sombra externa azul */
+              inset 0 0 0px rgb(25, 0, 255); /* Sombra interna azul */
+  border-radius: 8px; /* Bordas arredondadas */
+  color: white; /* Cor do texto */
+  padding: 3px 0px 3px 20px; /* Espaçamento interno */
+  margin: 0px 20%; /* Margem esquerda e direita */
+}
+
+/* Estilos para o contêiner de fundo fixo */
+#background-container {
+  position: fixed; /* Fixa a posição na tela */
+  top: 0; /* Alinha ao topo */
+  left: 0; /* Alinha à esquerda */
+  width: 100%; /* Largura total */
+  height: 100%; /* Altura total */
+  z-index: -2; /* Coloca atrás de outros elementos */
+  background-size: cover; /* Ajusta a imagem de fundo para cobrir o contêiner */
+  background-repeat: no-repeat; /* Não repete a imagem */
+}
+
+/* Estilos para o conteúdo do modal */
+.modal-content {
+  background-color: #343a40; /* Cor de fundo preta escura */
+  color: white; /* Cor do texto */
+}
+
+/* Estilos para as imagens GIF selecionáveis */
+.selectable-gif {
+  border-radius: 10px; /* Bordas arredondadas */
+  cursor: pointer; /* Cursor em forma de ponteiro */
+  transition: transform 0.3s; /* Transição suave ao passar o mouse */
+}
+
+.selectable-gif.selected {
+  border: 3px solid #28a745; /* Borda verde quando selecionado */
+}
+
+/* Estilos para o campo de entrada de texto dentro da caixa de entrada */
+.input-field {
+  background-color: transparent; /* Fundo transparente */
+  border: none; /* Remove a borda */
+  width: 95%; /* Largura de 95% */
+  outline: none; /* Remove o contorno padrão */
+  color: white; /* Cor do texto */
+  font-family: cursive; /* Fonte cursiva */
+}
+
+/* Estilos para o título */
+h5 {
+  font-family: 'Press Start 2P'; /* Fonte personalizada */
+  font-size: 14px; /* Tamanho da fonte */
+}
+
+/* Estilos para os botões com efeito de brilho ao passar o mouse */
+.glow-on-hover {
+  width: 35px; /* Largura do botão */
+  height: 35px; /* Altura do botão */
+  border: none; /* Remove a borda */
+  outline: none; /* Remove o contorno */
+  color: #fff; /* Cor do texto */
+  background: #111; /* Cor de fundo escura */
+  cursor: pointer; /* Cursor em forma de ponteiro */
+  position: relative; /* Posição relativa para animações */
+  z-index: 0; /* Define a ordem de empilhamento */
+  border-radius: 10px; /* Bordas arredondadas */
+  padding: 0px; /* Remove o preenchimento interno */
+  margin-left: 4px; /* Margem à esquerda */
+  margin-right: 5px; /* Margem à direita */
+}
+
+/* Efeito de brilho ao passar o mouse */
+.glow-on-hover:before {
+  content: ''; /* Conteúdo vazio */
+  background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000); /* Gradiente colorido */
+  position: absolute; /* Posição absoluta para cobrir o botão */
+  top: -2px; /* Ajusta a posição superior */
+  left: -2px; /* Ajusta a posição à esquerda */
+  background-size: 400%; /* Tamanho do fundo do gradiente */
+  z-index: -1; /* Coloca atrás do botão */
+  filter: blur(5px); /* Desfoque do fundo */
+  width: calc(100% + 4px); /* Largura maior para cobrir o botão */
+  height: calc(100% + 4px); /* Altura maior para cobrir o botão */
+  animation: glowing 20s linear infinite; /* Animação de brilho */
+  opacity: 0; /* Inicialmente invisível */
+  transition: opacity .3s ease-in-out; /* Transição suave da opacidade */
+  border-radius: 10px; /* Bordas arredondadas */
+}
+
+/* Efeito de clique no botão */
+.glow-on-hover:active {
+  color: #181818a8; /* Cor do texto quando pressionado */
+}
+
+.glow-on-hover:active:after {
+  background: transparent; /* Remove o fundo ao clicar */
+}
+
+.glow-on-hover:hover:before {
+  opacity: 1; /* Torna visível ao passar o mouse */
+}
+
+.glow-on-hover:after {
+  z-index: -1; /* Coloca atrás do botão */
+  content: ''; /* Conteúdo vazio */
+  position: absolute; /* Posição absoluta */
+  width: 100%; /* Largura total */
+  height: 100%; /* Altura total */
+  background: #111; /* Cor de fundo escura */
+  left: 0; /* Alinha à esquerda */
+  top: 0; /* Alinha ao topo */
+  border-radius: 10px; /* Bordas arredondadas */
+}
+
+/* Animação de brilho */
+@keyframes glowing {
+  0% {
+      background-position: 0 0; /* Posição inicial do gradiente */
+  }
+  50% {
+      background-position: 400% 0; /* Posição do meio da animação */
+  }
+  100% {
+      background-position: 0 0; /* Posição final do gradiente */
+  }
+}
+
+/* Estilos para a caixa de chat */
+.chat-canvas {
+  background-color: #191919; /* Cor de fundo escura */
+}
+
+/* Estilos para mensagens recebidas */
+.receiver_message {
+  padding: 8px; /* Espaçamento interno */
+  border: 2px solid cyan; /* Borda ciana */
+  border-radius: 0px 15px 15px 20px; /* Bordas arredondadas */
+  width: auto; /* Largura automática */
+  color: white; /* Cor do texto */
+  background-color: #0dcaf014; /* Cor de fundo clara com transparência */
+}
+
+/* Estilos para mensagens enviadas */
+.sender_message {
+  padding: 8px; /* Espaçamento interno */
+  border: 1px solid #0045ff; /* Borda azul */
+  border-radius: 15px 15px 0px 20px; /* Bordas arredondadas */
+  width: auto; /* Largura automática */
+  color: white; /* Cor do texto */
+  background-color: #0045ff; /* Cor de fundo azul */
+}
+
+/* Estilos para ajustar o tamanho máximo das mensagens */
+.width-size {
+  max-width: 80%; /* Largura máxima de 80% */
+  width: auto; /* Largura automática */
+}
